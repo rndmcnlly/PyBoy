@@ -9,6 +9,7 @@ Plugins that extend PyBoy's functionality. The only publicly exposed, are the ga
 __pdoc__ = {
     # docs exclude
     "auto_pause": False,
+    "cart_ram_access_log": False,
     "debug": False,
     "disable_input": False,
     "internal_ram_access_log": False,

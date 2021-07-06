@@ -17,6 +17,7 @@ from pyboy.plugins.screen_recorder import ScreenRecorder # isort:skip
 from pyboy.plugins.screenshot_recorder import ScreenshotRecorder # isort:skip
 from pyboy.plugins.rom_access_log import RomAccessLog # isort:skip
 from pyboy.plugins.internal_ram_access_log import InternalRamAccessLog # isort:skip
+from pyboy.plugins.cart_ram_access_log import CartRamAccessLog # isort:skip
 from pyboy.plugins.game_wrapper_super_mario_land import GameWrapperSuperMarioLand # isort:skip
 from pyboy.plugins.game_wrapper_tetris import GameWrapperTetris # isort:skip
 from pyboy.plugins.game_wrapper_kirby_dream_land import GameWrapperKirbyDreamLand # isort:skip
@@ -38,6 +39,7 @@ def parser_arguments():
     yield ScreenshotRecorder.argv
     yield RomAccessLog.argv
     yield InternalRamAccessLog.argv
+    yield CartRamAccessLog.argv
     yield GameWrapperSuperMarioLand.argv
     yield GameWrapperTetris.argv
     yield GameWrapperKirbyDreamLand.argv
@@ -76,6 +78,8 @@ class PluginManager:
         self.rom_access_log_enabled = self.rom_access_log.enabled()
         self.internal_ram_access_log = InternalRamAccessLog(pyboy, mb, pyboy_argv)
         self.internal_ram_access_log_enabled = self.internal_ram_access_log.enabled()
+        self.cart_ram_access_log = CartRamAccessLog(pyboy, mb, pyboy_argv)
+        self.cart_ram_access_log_enabled = self.cart_ram_access_log.enabled()
         self.game_wrapper_super_mario_land = GameWrapperSuperMarioLand(pyboy, mb, pyboy_argv)
         self.game_wrapper_super_mario_land_enabled = self.game_wrapper_super_mario_land.enabled()
         self.game_wrapper_tetris = GameWrapperTetris(pyboy, mb, pyboy_argv)
@@ -122,6 +126,8 @@ class PluginManager:
             events = self.rom_access_log.handle_events(events)
         if self.internal_ram_access_log_enabled:
             events = self.internal_ram_access_log.handle_events(events)
+        if self.cart_ram_access_log_enabled:
+            events = self.cart_ram_access_log.handle_events(events)
         if self.game_wrapper_super_mario_land_enabled:
             events = self.game_wrapper_super_mario_land.handle_events(events)
         if self.game_wrapper_tetris_enabled:
@@ -149,6 +155,8 @@ class PluginManager:
             self.rom_access_log.post_tick()
         if self.internal_ram_access_log_enabled:
             self.internal_ram_access_log.post_tick()
+        if self.cart_ram_access_log_enabled:
+            self.cart_ram_access_log.post_tick()
         if self.game_wrapper_super_mario_land_enabled:
             self.game_wrapper_super_mario_land.post_tick()
         if self.game_wrapper_tetris_enabled:
@@ -242,6 +250,8 @@ class PluginManager:
             title += self.rom_access_log.window_title()
         if self.internal_ram_access_log_enabled:
             title += self.internal_ram_access_log.window_title()
+        if self.cart_ram_access_log_enabled:
+            title += self.cart_ram_access_log.window_title()
         if self.game_wrapper_super_mario_land_enabled:
             title += self.game_wrapper_super_mario_land.window_title()
         if self.game_wrapper_tetris_enabled:
@@ -281,6 +291,8 @@ class PluginManager:
             self.rom_access_log.stop()
         if self.internal_ram_access_log_enabled:
             self.internal_ram_access_log.stop()
+        if self.cart_ram_access_log_enabled:
+            self.cart_ram_access_log.stop()
         if self.game_wrapper_super_mario_land_enabled:
             self.game_wrapper_super_mario_land.stop()
         if self.game_wrapper_tetris_enabled:

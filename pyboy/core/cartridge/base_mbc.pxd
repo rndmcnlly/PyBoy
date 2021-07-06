@@ -12,7 +12,7 @@ cdef class BaseMBC:
     cdef str gamename
     cdef object rombanks
     # 16 is absoulte max. 8KB in each bank
-    cdef uint8_t[16][8 * 1024] rambanks
+    cdef object rambanks
     cdef uint8_t carttype
     cdef bint battery
     cdef bint rtc_enabled

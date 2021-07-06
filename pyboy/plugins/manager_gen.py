@@ -9,7 +9,7 @@ import re
 windows = ["WindowSDL2", "WindowOpenGL", "WindowHeadless", "WindowDummy", "Debug"]
 game_wrappers = ["GameWrapperSuperMarioLand", "GameWrapperTetris", "GameWrapperKirbyDreamLand"]
 plugins = [
-    "DisableInput", "AutoPause", "RecordReplay", "Rewind", "ScreenRecorder", "ScreenshotRecorder", "RomAccessLog", "InternalRamAccessLog"
+    "DisableInput", "AutoPause", "RecordReplay", "Rewind", "ScreenRecorder", "ScreenshotRecorder", "RomAccessLog", "InternalRamAccessLog", "CartRamAccessLog"
 ] + game_wrappers
 all_plugins = windows + plugins
 
