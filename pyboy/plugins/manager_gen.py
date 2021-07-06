@@ -9,7 +9,7 @@ import re
 windows = ["WindowSDL2", "WindowOpenGL", "WindowHeadless", "WindowDummy", "Debug"]
 game_wrappers = ["GameWrapperSuperMarioLand", "GameWrapperTetris", "GameWrapperKirbyDreamLand"]
 plugins = [
-    "DisableInput", "AutoPause", "RecordReplay", "Rewind", "ScreenRecorder", "ScreenshotRecorder", "RomAccessLog"
+    "DisableInput", "AutoPause", "RecordReplay", "Rewind", "ScreenRecorder", "ScreenshotRecorder", "RomAccessLog", "InternalRamAccessLog"
 ] + game_wrappers
 all_plugins = windows + plugins
 
@@ -174,7 +174,7 @@ if __name__ == "__main__":
 
                 skip_lines(line_iter, "# docs exclude end")
 
-                for p in (set(all_plugins) - set(game_wrappers)) | set(["manager", "manager_gen"]):
+                for p in sorted((set(all_plugins) - set(game_wrappers)) | set(["manager", "manager_gen"])):
                     p_name = to_snake_case(p)
                     lines.append(f"\"{p_name}\": False,\n")
 
