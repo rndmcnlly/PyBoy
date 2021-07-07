@@ -18,6 +18,7 @@ __pdoc__ = {
     "rom_access_log": False,
     "screen_recorder": False,
     "screenshot_recorder": False,
+    "vram_access_log": False,
     "window_dummy": False,
     "window_headless": False,
     "window_open_gl": False,

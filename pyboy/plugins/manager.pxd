@@ -19,6 +19,7 @@ from pyboy.plugins.screenshot_recorder cimport ScreenshotRecorder
 from pyboy.plugins.rom_access_log cimport RomAccessLog
 from pyboy.plugins.internal_ram_access_log cimport InternalRamAccessLog
 from pyboy.plugins.cart_ram_access_log cimport CartRamAccessLog
+from pyboy.plugins.vram_access_log cimport VramAccessLog
 from pyboy.plugins.game_wrapper_super_mario_land cimport GameWrapperSuperMarioLand
 from pyboy.plugins.game_wrapper_tetris cimport GameWrapperTetris
 from pyboy.plugins.game_wrapper_kirby_dream_land cimport GameWrapperKirbyDreamLand
@@ -45,6 +46,7 @@ cdef class PluginManager:
     cdef public RomAccessLog rom_access_log
     cdef public InternalRamAccessLog internal_ram_access_log
     cdef public CartRamAccessLog cart_ram_access_log
+    cdef public VramAccessLog vram_access_log
     cdef public GameWrapperSuperMarioLand game_wrapper_super_mario_land
     cdef public GameWrapperTetris game_wrapper_tetris
     cdef public GameWrapperKirbyDreamLand game_wrapper_kirby_dream_land
@@ -62,6 +64,7 @@ cdef class PluginManager:
     cdef bint rom_access_log_enabled
     cdef bint internal_ram_access_log_enabled
     cdef bint cart_ram_access_log_enabled
+    cdef bint vram_access_log_enabled
     cdef bint game_wrapper_super_mario_land_enabled
     cdef bint game_wrapper_tetris_enabled
     cdef bint game_wrapper_kirby_dream_land_enabled

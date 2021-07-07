@@ -17,7 +17,7 @@ cdef int ROWS, COLS, TILES, FRAME_CYCLES, VIDEO_RAM, OBJECT_ATTRIBUTE_MEMORY
 
 
 cdef class LCD:
-    cdef uint8_t[8 * 1024] VRAM
+    cdef object VRAM
     cdef uint8_t[0xA0] OAM
 
     cdef uint8_t SCY
